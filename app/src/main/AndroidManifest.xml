@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PositionActivity"></activity>
+        <activity android:name=".activity.FinalPayActivity"></activity>
+        <activity android:name=".activity.PositionActivity" />
         <activity android:name=".activity.ReserveActivity" />
         <activity android:name=".activity.VipActivity" />
         <activity android:name=".activity.FacekeyActivity" />
