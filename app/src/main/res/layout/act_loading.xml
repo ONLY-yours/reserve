@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoadingActivity">
+
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_gray"
+        app:layout_constraintLeft_toLeftOf="@id/et_password"
+        app:layout_constraintRight_toRightOf="@id/et_password"
+        app:layout_constraintBottom_toBottomOf="@id/et_password"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_gray"
+        app:layout_constraintLeft_toLeftOf="@id/et_name"
+        app:layout_constraintRight_toRightOf="@id/et_name"
+        app:layout_constraintBottom_toBottomOf="@id/et_name"/>
+
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:hint="密码"
+        app:met_floatingLabelTextSize="15sp"
+        app:met_hideUnderline="true"
+        app:met_floatingLabel="highlight"
+        android:background="@null"
+        android:shadowColor="@color/colorNav"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="登陆"
+        app:layout_constraintLeft_toLeftOf="@id/et_name"
+        app:layout_constraintRight_toRightOf="@id/et_name"
+        app:layout_constraintBottom_toTopOf="@id/et_name"
+        android:layout_marginBottom="60dp"/>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+
+        app:met_floatingLabelTextSize="15sp"
+        android:gravity="center"
+        android:hint="账号"
+        app:met_hideUnderline="true"
+        app:met_floatingLabel="normal"
+        android:background="@null"
+        android:shadowColor="@color/colorNav"
+
+        app:layout_constraintBottom_toTopOf="@id/et_password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_float_login"
+        app:fab_icon="@drawable/ic_check_pass"
+        app:fab_colorNormal="@color/colorPrimary"
+        app:fab_colorPressed="@color/colorPrimaryDark"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:text="注册"
+        android:layout_marginTop="10dp"
+        android:textColor="#b3b3b3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/et_password"
+        app:layout_constraintTop_toBottomOf="@id/et_password"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_forgetpassword"
+        android:text="忘记密码"
+        android:textColor="#b3b3b3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/et_password"
+        app:layout_constraintTop_toBottomOf="@id/et_password"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

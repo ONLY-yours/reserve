@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.reserve.R;
+import com.example.reserve.utils.ActivityCollector;
 import com.example.reserve.utils.ToastUtil;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -66,6 +67,7 @@ public abstract   class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActivityCollector.addActivity(this);
         ImmersionBar.with(this)
                 .statusBarColor(R.color.colorNav)     //状态栏颜色，不写默认透明色\
                 .keyboardEnable(true)  //解决软键盘与底部输入框冲突问题
@@ -74,5 +76,9 @@ public abstract   class BaseActivity extends AppCompatActivity {
                 .init();
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.addActivity(this);
+    }
 }

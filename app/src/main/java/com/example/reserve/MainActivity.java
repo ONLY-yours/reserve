@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.reserve.activity.FacekeyActivity;
 import com.example.reserve.activity.PositionActivity;
 import com.example.reserve.activity.ReserveActivity;
 import com.example.reserve.activity.VipActivity;
 import com.example.reserve.base.BaseActivity;
+import com.example.reserve.utils.ActivityCollector;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 import com.gyf.immersionbar.OnKeyboardListener;
@@ -78,4 +80,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     break;
         }
     }
+
+    private static final int TIME_EXIT=2000;
+    private long mBackPressed;
+
+    @Override
+    public void onBackPressed(){
+        if(mBackPressed+TIME_EXIT>System.currentTimeMillis()){
+            super.onBackPressed();
+            ActivityCollector.finishAll();
+            return;
+        }else{
+            Toast.makeText(this,"再点击一次返回退出程序", Toast.LENGTH_SHORT).show();
+            mBackPressed=System.currentTimeMillis();
+        }
+    }
+
 }

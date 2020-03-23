@@ -29,7 +29,6 @@ public class ReserveActivity extends BaseActivity {
         HomeAdapter adapter = new HomeAdapter();
         rvHomeReserve.setAdapter(adapter);
 
-
         adapter.setmOnItemClickListener(myOnItemClickListener);
 
     }
