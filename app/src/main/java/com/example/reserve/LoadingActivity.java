@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.reserve.activity.usermanger.RegistActivity;
 import com.example.reserve.base.BaseActivity;
 import com.example.reserve.bean.LoginBean;
 import com.example.reserve.net.AppRetrofit;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 
 public class LoadingActivity extends BaseActivity implements View.OnClickListener {
 
-    private Button btnLogin;
+    private Button btnRegist;
     private FloatingActionButton btnFloatLogin;
 
     private MaterialEditText etName;
@@ -41,8 +42,6 @@ public class LoadingActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_loading);
 
-
-
         initview();
     }
 
@@ -50,8 +49,8 @@ public class LoadingActivity extends BaseActivity implements View.OnClickListene
         etPassword=findViewById(R.id.et_password);
         etName=findViewById(R.id.et_name);
 
-        btnLogin=findViewById(R.id.btn_login);
-        btnLogin.setOnClickListener(this);
+        btnRegist=findViewById(R.id.btn_regist);
+        btnRegist.setOnClickListener(this);
 
         btnFloatLogin=findViewById(R.id.btn_float_login);
         btnFloatLogin.setClickable(true);
@@ -63,39 +62,47 @@ public class LoadingActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btn_login:
-//                startActivity(MainActivity.class);
+            case R.id.btn_regist:
+                startActivity(RegistActivity.class);
                 break;
             case R.id.btn_float_login:
-                username=etName.getText().toString();
-                password=etPassword.getText().toString();
-                btnFloatLogin.setClickable(false);
-                JSONObject jsonObject = new JSONObject();
-                try {
-                jsonObject.put("username", username);
-                jsonObject.put("password", password);
-                }catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                RequestBody body=RequestBody.create(MediaType.parse("application/json"),jsonObject.toString());
-                AppRetrofit.getNetApi().doLogin(body).enqueue(new Callback<LoginBean>() {
-                    @Override
-                    public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
-                        if (response.body().getSuccess().equals("true")){
-                            startActivity(MainActivity.class);
-                        }else{
-                            showToast("账号密码错误，请重试");
-                        }
-                        btnFloatLogin.setClickable(true);
-                    }
+//                username=etName.getText().toString();
+//                password=etPassword.getText().toString();
+//                btnFloatLogin.setClickable(false);
+//                JSONObject jsonObject = new JSONObject();
+//                try {
+//                jsonObject.put("username", username);
+//                jsonObject.put("password", password);
+//                }catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                showToast(password+username);
+//                if (password.length()>2&&username.length()>3){
+//                    RequestBody body=RequestBody.create(MediaType.parse("application/json"),jsonObject.toString());
+//                    AppRetrofit.getNetApi().doLogin(body).enqueue(new Callback<LoginBean>() {
+//                        @Override
+//                        public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
+//                            if (response.body().getSuccess().equals("true")){
+//                                startActivity(MainActivity.class);
+//                            }else{
+//                                showToast("账号密码错误，请重试");
+//                            }
+//                            btnFloatLogin.setClickable(true);
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<LoginBean> call, Throwable t) {
+//                            showToast("请求失败，请检查网络后重试");
+//                            btnFloatLogin.setClickable(true);
+//                        }
+//                    });
+//                    break;
+//                }else {
+//                    showToast("请输入密码和账号");
+//                    btnFloatLogin.setClickable(true);
+//                }
 
-                    @Override
-                    public void onFailure(Call<LoginBean> call, Throwable t) {
-                        showToast("请求失败，请检查网络后重试");
-                        btnFloatLogin.setClickable(true);
-                    }
-                });
-                break;
+                startActivity(MainActivity.class);
         }
     }
 }

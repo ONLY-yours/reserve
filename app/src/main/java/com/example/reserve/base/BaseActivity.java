@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,4 +83,19 @@ public abstract   class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         ActivityCollector.addActivity(this);
     }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if(null != this.getCurrentFocus()){
+            /**
+             * 点击空白位置 隐藏软键盘
+             */
+            InputMethodManager mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            assert mInputMethodManager != null;
+            return mInputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+        }
+        return super .onTouchEvent(event);
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.example.reserve.adapter;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reserve.R;
-import com.example.reserve.activity.FinalPayActivity;
+import com.example.reserve.bean.HomeListBean;
+
+import java.util.List;
 
 /**
  * @auther: lijunjie
@@ -20,6 +21,12 @@ import com.example.reserve.activity.FinalPayActivity;
  * @purpose：
  */
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
+
+    private List<HomeListBean.homelistBean> smalldetial;
+
+    public HomeAdapter(HomeListBean home){
+        smalldetial=home.getResult();
+    }
 
     private OnItemClickListener mOnItemClickListener = null;
 
@@ -53,12 +60,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvPrice.setText("¥ 899");
+        holder.tvPrice.setText("¥ "+smalldetial.get(position).getPrice());
+        holder.tvDescribe1.setText(smalldetial.get(position).getName());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return smalldetial.size();
     }
 
 

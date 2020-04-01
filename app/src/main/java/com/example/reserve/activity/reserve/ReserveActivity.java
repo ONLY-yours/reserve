@@ -1,18 +1,15 @@
-package com.example.reserve.activity;
+package com.example.reserve.activity.reserve;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
+import com.example.reserve.MainActivity;
 import com.example.reserve.R;
 import com.example.reserve.adapter.HomeAdapter;
 import com.example.reserve.base.BaseActivity;
-
-import static com.example.reserve.adapter.HomeAdapter.*;
 
 public class ReserveActivity extends BaseActivity {
 
@@ -26,7 +23,7 @@ public class ReserveActivity extends BaseActivity {
         rvHomeReserve=findViewById(R.id.rv_homereserve);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvHomeReserve.setLayoutManager(manager);
-        HomeAdapter adapter = new HomeAdapter();
+        HomeAdapter adapter = new HomeAdapter(MainActivity.home);
         rvHomeReserve.setAdapter(adapter);
 
         adapter.setmOnItemClickListener(myOnItemClickListener);

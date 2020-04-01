@@ -1,4 +1,4 @@
-package com.example.reserve.activity;
+package com.example.reserve.activity.reserve;
 
 import androidx.appcompat.app.AppCompatActivity;
 
