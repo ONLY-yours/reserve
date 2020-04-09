@@ -2,6 +2,7 @@ package com.example.reserve.base;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -70,6 +71,7 @@ public abstract   class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
+
         ImmersionBar.with(this)
                 .statusBarColor(R.color.colorNav)     //状态栏颜色，不写默认透明色\
                 .keyboardEnable(true)  //解决软键盘与底部输入框冲突问题
@@ -77,6 +79,37 @@ public abstract   class BaseActivity extends AppCompatActivity {
 //                .hideBar(BarHide.FLAG_HIDE_BAR)
                 .init();
     }
+
+    /**
+     * 存储键值对
+     *
+     * @param  key  value
+     */
+    public void saveTheKeyValues(String key,String value){
+        SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
+        if (getTheKeyValues(key)!=null){
+            editor.remove(""+key);
+            editor.apply();
+        }
+//        SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
+        editor.putString(""+key, ""+value);
+        editor.apply();
+    }
+
+    /**
+     * 取出键值对中的值
+     *
+     * @param  key
+     */
+    public String getTheKeyValues(String key){
+        SharedPreferences preferences = getSharedPreferences("data",MODE_PRIVATE);
+        String str1 = preferences.getString(""+key,null);
+        if (str1.length()<1){
+            return "";
+        }else return str1;
+    }
+
+
 
     @Override
     protected void onDestroy() {

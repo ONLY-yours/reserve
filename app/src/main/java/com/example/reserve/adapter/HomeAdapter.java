@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reserve.R;
+import com.example.reserve.activity.reserve.ReserveActivity;
 import com.example.reserve.bean.HomeListBean;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private OnItemClickListener mOnItemClickListener = null;
 
     public static interface OnItemClickListener {
-        void onItemClick(View view,int position);
+        void onItemClick(View view,int viewType,int position);
     }
 
     public void setmOnItemClickListener(HomeAdapter.OnItemClickListener onItemClickListener){
@@ -43,16 +44,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_home_reserve,parent,false);
         final ViewHolder viewHolder = new ViewHolder(view);
+
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mOnItemClickListener.onItemClick(view,viewType);
+                mOnItemClickListener.onItemClick(view,viewType,viewHolder.getAdapterPosition());
             }
         });
         viewHolder.btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mOnItemClickListener.onItemClick(view,viewType);
+                mOnItemClickListener.onItemClick(view,viewType,viewHolder.getAdapterPosition());
             }
         });
         return viewHolder;
@@ -62,6 +64,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvPrice.setText("¥ "+smalldetial.get(position).getPrice());
         holder.tvDescribe1.setText(smalldetial.get(position).getName());
+
+        //设置具体信息
+
     }
 
     @Override
@@ -71,7 +76,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         //这些控件都可以设置监听事件
         View view;
         ImageView iv_img;

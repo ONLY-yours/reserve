@@ -15,6 +15,8 @@ public class ReserveActivity extends BaseActivity {
 
     private RecyclerView rvHomeReserve;
 
+    public static int Position=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,7 @@ public class ReserveActivity extends BaseActivity {
         rvHomeReserve=findViewById(R.id.rv_homereserve);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rvHomeReserve.setLayoutManager(manager);
+
         HomeAdapter adapter = new HomeAdapter(MainActivity.home);
         rvHomeReserve.setAdapter(adapter);
 
@@ -32,14 +35,16 @@ public class ReserveActivity extends BaseActivity {
 
     private HomeAdapter.OnItemClickListener myOnItemClickListener = new HomeAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int position) {
+        public void onItemClick(View view,int viewType ,int position) {
             switch (view.getId()){
-
                 case R.id.btn_pay:
                     startActivity(FinalPayActivity.class);
                     break;
                 case R.id.view_detial:
-                    showToast("detials");
+
+                    Position=position;
+                    saveTheKeyValues("position",""+position);
+                    startActivity(RoomDetialActivity.class);
                     break;
 
             }

@@ -48,7 +48,7 @@ public interface Api {
 
     //3.1获取房间类型
     @Headers({"Content-Type: application/json","Accept: application/json"})
-    @POST("hotel/room/type/getList")
+    @POST("hotel/room/type/getListDetail")
     Call<HomeListBean>getHomeList(
             @Body RequestBody json
     );
