@@ -11,6 +11,9 @@ import com.example.reserve.R;
 import com.example.reserve.base.BaseActivity;
 import com.example.reserve.MainActivity;
 
+
+//房间详细细节界面
+
 public class RoomDetialActivity extends BaseActivity  {
 
     private Button btnPay;
@@ -39,7 +42,8 @@ public class RoomDetialActivity extends BaseActivity  {
     }
 
     void initView(){
-        int position = Integer.parseInt(getTheKeyValues("position"));
+//        int position = Integer.parseInt(getTheKeyValues("position"));
+        int position = ReserveActivity.Position;
         //客房区域
         tvArea=findViewById(R.id.tv_area);
         tvArea.setText(MainActivity.home.getResult().get(position).getArea());
@@ -48,7 +52,7 @@ public class RoomDetialActivity extends BaseActivity  {
         tvName.setText(MainActivity.home.getResult().get(position).getName());
         //价格
         tvPrice=findViewById(R.id.tv_price);
-        tvPrice.setText(MainActivity.home.getResult().get(position).getPrice());
+        tvPrice.setText("￥"+MainActivity.home.getResult().get(position).getPrice());
         //入住人数
         tvPeopleNumber=findViewById(R.id.tv_people_number);
         tvPeopleNumber.setText(MainActivity.home.getResult().get(position).getPersonNum()+"人间");

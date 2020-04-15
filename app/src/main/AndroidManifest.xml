@@ -12,12 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.reserve.RoomDetialActivity"></activity>
+        <activity android:name=".activity.UserCenter.PeopleAddActivity"></activity>
+        <activity android:name=".activity.UserCenter.CurstomListActivity" />
+        <activity android:name=".activity.UserCenter.OrderManageActivity" />
+        <activity android:name=".activity.reserve.RoomDetialActivity" />
         <activity android:name=".activity.usermanger.RegistActivity" />
         <activity android:name=".activity.reserve.FinalPayActivity" />
         <activity android:name=".activity.PositionActivity" />
         <activity android:name=".activity.reserve.ReserveActivity" />
-        <activity android:name=".activity.VipActivity" />
+        <activity android:name=".activity.UserCenter.VipActivity" />
         <activity android:name=".activity.FacekeyActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoadingActivity">

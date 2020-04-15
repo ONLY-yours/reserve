@@ -1,6 +1,7 @@
 package com.example.reserve.net;
 
 
+import com.example.reserve.bean.CurstomListBean;
 import com.example.reserve.bean.HomeListBean;
 import com.example.reserve.bean.LoginBean;
 
@@ -45,6 +46,15 @@ public interface Api {
     Call<LoginBean>sedPhoneNumber(
             @Body RequestBody json
     );
+
+    //2.3查询客户列表
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST("hotel/customer/userInfo/getCustomerList")
+    Call<CurstomListBean>getCurstomList(
+            @Body RequestBody json
+    );
+
+
 
     //3.1获取房间类型
     @Headers({"Content-Type: application/json","Accept: application/json"})

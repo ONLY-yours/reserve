@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.example.reserve.activity.FacekeyActivity;
 import com.example.reserve.activity.PositionActivity;
 import com.example.reserve.activity.reserve.ReserveActivity;
-import com.example.reserve.activity.VipActivity;
+import com.example.reserve.activity.UserCenter.VipActivity;
 import com.example.reserve.base.BaseActivity;
 import com.example.reserve.bean.HomeListBean;
 import com.example.reserve.net.AppRetrofit;
@@ -17,6 +17,9 @@ import com.example.reserve.utils.ActivityCollector;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -37,6 +40,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     public static HomeListBean home;
 
+    Calendar calendar= Calendar.getInstance(Locale.CHINA);
+
+    public static String checkintime;
+    public static String checkouttime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     void initview(){
+        //查询时间
+        checkintime=calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.DAY_OF_MONTH)
+                +" "+calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE)+":"+calendar.get(Calendar.SECOND);
+        checkouttime=calendar.get(Calendar.YEAR)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+(calendar.get(Calendar.DAY_OF_MONTH)+1)
+                +" "+calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE)+":"+calendar.get(Calendar.SECOND);
+
+
         viewVip=findViewById(R.id.view_vip);
         viewFaceKey=findViewById(R.id.view_facekey);
 
@@ -89,8 +104,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     void getHomeList(){
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("checkinTime","2020-04-01 11:15:05");
-            jsonObject.put("checkoutTime","2020-04-03 11:15:05");
+//            jsonObject.put("checkinTime","2020-04-01 11:15:05");
+//            jsonObject.put("checkoutTime","2020-04-03 11:15:05");
+            jsonObject.put("checkinTime",checkintime);
+            jsonObject.put("checkoutTime",checkouttime);
         }catch (JSONException e) {
             e.printStackTrace();
         }

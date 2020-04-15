@@ -86,6 +86,7 @@
                 />
 
             <View
+                android:id="@+id/view1"
                 android:layout_width="0dp"
                 android:layout_height="96dp"
                 android:background="@drawable/circle_white"
@@ -93,6 +94,52 @@
                 app:layout_constraintLeft_toLeftOf="@id/view_position"
                 app:layout_constraintRight_toRightOf="@id/view_position"
                 app:layout_constraintTop_toBottomOf="@id/view_position"/>
+
+            <TextView
+                android:textColor="#B3B3B3"
+                android:textSize="16sp"
+                android:text="入住时间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/tv_checkin_time"
+                app:layout_constraintBottom_toTopOf="@id/tv_checkin_time"/>
+
+            <TextView
+                android:textColor="#B3B3B3"
+                android:textSize="16sp"
+                android:text="退房时间"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="@id/tv_checkout_time"
+                app:layout_constraintBottom_toTopOf="@id/tv_checkout_time"/>
+
+            <TextView
+                android:id="@+id/tv_checkin_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2月23日 今天"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintLeft_toLeftOf="@id/view1"
+                app:layout_constraintTop_toTopOf="@id/view1"
+                app:layout_constraintBottom_toBottomOf="@id/view1"
+                android:layout_marginLeft="14dp"/>
+
+            <TextView
+                android:id="@+id/tv_checkout_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2月24日 周一"
+                android:textColor="@color/colorText"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                app:layout_constraintRight_toRightOf="@id/view1"
+                app:layout_constraintTop_toTopOf="@id/view1"
+                app:layout_constraintBottom_toBottomOf="@id/view1"
+                android:layout_marginRight="14dp"/>
+
+
 
             <LinearLayout
                 android:layout_width="0dp"
