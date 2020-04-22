@@ -67,6 +67,7 @@ public class HomeListBean {
 //                 "area": "1000.00",
 //                 "imgUrl": "files/20200323/1584896348487.jpg",
 //                 "roomNumber": "1"
+//                  "id": "1238359667453788162"
         public String name;
         public String price;
         public String imgUrl;
@@ -77,6 +78,11 @@ public class HomeListBean {
         public String isWifi;
         public String personNum;
         public String area;
+        public String id;
+
+        public String getId() {
+            return id;
+        }
 
         public String getName() {
             return name;
@@ -159,6 +165,9 @@ public class HomeListBean {
             this.personNum = personNum;
         }
 
+        public void setId(String id) {
+            this.id = id;
+        }
     }
 
 

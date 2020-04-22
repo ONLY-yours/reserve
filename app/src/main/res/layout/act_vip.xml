@@ -65,7 +65,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/circle_white"
             android:gravity="center"
-            android:text="个人信息管理" />
+            android:text="添加客户（住户）" />
 
         <TextView
             android:id="@+id/tv_people_add"
@@ -74,7 +74,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/circle_white"
             android:gravity="center"
-            android:text="入住人员信息/添加" />
+            android:text="入住人员信息管理" />
 
     </LinearLayout>
 

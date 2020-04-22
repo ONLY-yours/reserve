@@ -1,9 +1,11 @@
 package com.example.reserve.net;
 
 
+import com.example.reserve.bean.CurstomAddBean;
 import com.example.reserve.bean.CurstomListBean;
 import com.example.reserve.bean.HomeListBean;
 import com.example.reserve.bean.LoginBean;
+import com.example.reserve.bean.TBean;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -32,7 +34,6 @@ public interface Api {
             @Body RequestBody json
     );
 
-
     //1.2注册
     @Headers({"Content-Type: application/json","Accept: application/json"})
     @POST("app/user/register")
@@ -54,6 +55,19 @@ public interface Api {
             @Body RequestBody json
     );
 
+    //2.4添加客户
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST("hotel/customer/userInfo/insert")
+    Call<CurstomAddBean>sendInsertCustom(
+            @Body RequestBody json
+    );
+
+    //2.5修改信息
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST("hotel/customer/userInfo/update")
+    Call<TBean>updateCurstomMessage(
+            @Body RequestBody json
+    );
 
 
     //3.1获取房间类型

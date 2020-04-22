@@ -37,6 +37,7 @@ public class LoadingActivity extends BaseActivity implements View.OnClickListene
     private String username="";
     private String password="";
 
+    public static String token="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,43 +67,47 @@ public class LoadingActivity extends BaseActivity implements View.OnClickListene
                 startActivity(RegistActivity.class);
                 break;
             case R.id.btn_float_login:
-//                username=etName.getText().toString();
-//                password=etPassword.getText().toString();
-//                btnFloatLogin.setClickable(false);
-//                JSONObject jsonObject = new JSONObject();
-//                try {
-//                jsonObject.put("username", username);
-//                jsonObject.put("password", password);
-//                }catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                showToast(password+username);
-//                if (password.length()>2&&username.length()>3){
-//                    RequestBody body=RequestBody.create(MediaType.parse("application/json"),jsonObject.toString());
-//                    AppRetrofit.getNetApi().doLogin(body).enqueue(new Callback<LoginBean>() {
-//                        @Override
-//                        public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
-//                            if (response.body().getSuccess().equals("true")){
-//                                startActivity(MainActivity.class);
-//                            }else{
-//                                showToast("账号密码错误，请重试");
-//                            }
-//                            btnFloatLogin.setClickable(true);
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<LoginBean> call, Throwable t) {
-//                            showToast("请求失败，请检查网络后重试");
-//                            btnFloatLogin.setClickable(true);
-//                        }
-//                    });
-//                    break;
-//                }else {
-//                    showToast("请输入密码和账号");
-//                    btnFloatLogin.setClickable(true);
-//                }
+                username=etName.getText().toString();
+                password=etPassword.getText().toString();
+                btnFloatLogin.setClickable(false);
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.put("username", "18267915845");
+                    jsonObject.put("password", "123456");
+//                    jsonObject.put("username", username);
+//                    jsonObject.put("password", password);18267915845
 
-                startActivity(MainActivity.class);
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                showToast(password+username);
+                if (password.length()>2&&username.length()>3){
+                    RequestBody body=RequestBody.create(MediaType.parse("application/json"),jsonObject.toString());
+                    AppRetrofit.getNetApi().doLogin(body).enqueue(new Callback<LoginBean>() {
+                        @Override
+                        public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
+                            if (response.body().getSuccess().equals("true")){
+                                startActivity(MainActivity.class);
+                                token=response.body().getResult().getToken();
+                            }else{
+                                showToast("账号密码错误，请重试");
+                            }
+                            btnFloatLogin.setClickable(true);
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginBean> call, Throwable t) {
+                            showToast("请求失败，请检查网络后重试");
+                            btnFloatLogin.setClickable(true);
+                        }
+                    });
+                    break;
+                }else {
+                    showToast("请输入密码和账号");
+                    btnFloatLogin.setClickable(true);
+                }
+
+//                startActivity(MainActivity.class);
         }
     }
 }

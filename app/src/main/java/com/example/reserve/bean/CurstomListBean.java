@@ -61,10 +61,16 @@ public class CurstomListBean {
 //         "idcard": "330226200003212222",
 //          "phone": "13567466366",
 //          "gednder": null
+//          "id": "1251841236171804674"
         private String name;
         private String idcard;
         private String phone;
-        private String gednder;
+        private String gender;
+        private String id;
+
+        public String getId() {
+            return id;
+        }
 
         public String getName() {
             return name;
@@ -74,8 +80,8 @@ public class CurstomListBean {
             return phone;
         }
 
-        public String getGednder() {
-            return gednder;
+        public String getGender() {
+            return gender;
         }
 
         public String getIdcard() {
@@ -90,12 +96,16 @@ public class CurstomListBean {
             this.phone = phone;
         }
 
-        public void setGednder(String gednder) {
-            this.gednder = gednder;
+        public void setGender(String gender) {
+            this.gender = gender;
         }
 
         public void setIdcard(String idcard) {
             this.idcard = idcard;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
     }
 

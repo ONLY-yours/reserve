@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.reserve.R;
 import com.example.reserve.base.BaseActivity;
-import com.example.reserve.bean.CurstomAddBean;
 import com.example.reserve.bean.TBean;
 import com.example.reserve.net.AppRetrofit;
 
@@ -23,11 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-//用户管理（客户管理）-添加客户
-
-public class PeopleAddActivity extends BaseActivity implements View.OnClickListener {
-
+public class ModifyCurstomActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText etName;
     private EditText etIdCard;
@@ -40,11 +35,10 @@ public class PeopleAddActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_people_add);
-
+        setContentView(R.layout.act_modify_curstom);
         initview();
-    }
 
+    }
 
     void initview(){
         etName=findViewById(R.id.et_name);
@@ -60,6 +54,10 @@ public class PeopleAddActivity extends BaseActivity implements View.OnClickListe
         btnFeMale.setOnClickListener(this);
         btnUpLoad.setOnClickListener(this);
 
+        etName.setText(VipActivity.curstomListBean.getResult().get(CurstomListActivity.Position).getName());
+        etIdCard.setText(VipActivity.curstomListBean.getResult().get(CurstomListActivity.Position).getIdcard());
+        etPhone.setText(VipActivity.curstomListBean.getResult().get(CurstomListActivity.Position).getPhone());
+        tvGender.setText(VipActivity.curstomListBean.getResult().get(CurstomListActivity.Position).getGender());
     }
 
     @Override
@@ -78,27 +76,32 @@ public class PeopleAddActivity extends BaseActivity implements View.OnClickListe
                     jsonObject.put("idcard",""+etIdCard.getText());
                     jsonObject.put("name",""+etName.getText());
                     jsonObject.put("phone",""+etPhone.getText());
+                    jsonObject.put("id",VipActivity.curstomListBean.getResult().get(CurstomListActivity.Position).getId());
                 }catch (JSONException e) {
                     e.printStackTrace();
                 }
                 RequestBody body=RequestBody.create(MediaType.parse("application/json"),jsonObject.toString());
-                AppRetrofit.getNetApi().sendInsertCustom(body).enqueue(new Callback<CurstomAddBean>() {
+                AppRetrofit.getNetApi().updateCurstomMessage(body).enqueue(new Callback<TBean>() {
                     @Override
-                    public void onResponse(Call<CurstomAddBean> call, Response<CurstomAddBean> response) {
+                    public void onResponse(Call<TBean> call, Response<TBean> response) {
                         if (response.body().getSuccess().equals("true")){
-                            showToast("添加成功");
-                        }else {
-                            showToast("添加失败，请填写正确的信息");
+                            showToast("修改成功");
+                            onBackPressed();
+                        }else{
+                            showToast("修改失败，请填写正确的信息");
+                            onBackPressed();
                         }
-
                     }
                     @Override
-                    public void onFailure(Call<CurstomAddBean> call, Throwable t) {
-                        showToast("请检查网络后重试");
+                    public void onFailure(Call<TBean> call, Throwable t) {
+                        showToast("修改失败，请检查网络后重试");
                     }
                 });
+
                 onBackPressed();
+                startActivity(VipActivity.class);
                 break;
         }
     }
+
 }

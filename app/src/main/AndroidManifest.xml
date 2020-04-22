@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.UserCenter.PeopleAddActivity"></activity>
+        <activity android:name=".activity.UserCenter.ModifyCurstomActivity"></activity>
+        <activity android:name=".activity.UserCenter.PeopleAddActivity" />
         <activity android:name=".activity.UserCenter.CurstomListActivity" />
         <activity android:name=".activity.UserCenter.OrderManageActivity" />
         <activity android:name=".activity.reserve.RoomDetialActivity" />

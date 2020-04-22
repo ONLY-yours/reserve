@@ -181,7 +181,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="会员权益"
+                android:text="会员中心"
                 android:textColor="#101010"
                 android:textSize="16sp"
                 android:layout_marginLeft="17dp"
@@ -192,7 +192,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="特殊权利"
+                android:text="个人中心管理"
                 android:textColor="#8C8B8B"
                 android:textSize="12sp"
                 android:layout_marginLeft="17dp"

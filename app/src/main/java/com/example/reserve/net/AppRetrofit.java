@@ -1,7 +1,12 @@
 package com.example.reserve.net;
 
-import java.util.HashMap;
+import com.example.reserve.net.Client.HeaderTokenIntercept;
+import com.example.reserve.net.Client.NetRepository;
 
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -14,9 +19,12 @@ public class AppRetrofit {
 
     private static Api netApi;
 
+
     public static Api getNetApi() {
         if (netApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
+                    .client(NetRepository.getClient().build())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl("http://121.199.77.184/hotel-ai-api/") // 设置网络请求baseUrl
                     .addConverterFactory(GsonConverterFactory.create()) //设置使用Gson解析
                     .build();
@@ -24,6 +32,9 @@ public class AppRetrofit {
         }
         return netApi;
     }
+
+
+
 
     /**
      * 公共参数
