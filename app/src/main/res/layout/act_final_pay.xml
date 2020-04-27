@@ -217,17 +217,29 @@
                 app:layout_constraintBottom_toBottomOf="@id/line2"/>
 
             <EditText
+                android:id="@+id/et_people"
                 android:layout_width="137dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:textSize="14sp"
                 android:lines="1"
                 android:background="@color/colorWhite"
-                android:hint="请输入名字"
+                android:hint="请点击右边选择用户"
                 android:layout_marginLeft="144dp"
                 app:layout_constraintLeft_toLeftOf="@id/view2"
                 app:layout_constraintTop_toTopOf="@id/line1"
                 app:layout_constraintBottom_toBottomOf="@id/line2"/>
+
+            <Button
+                android:id="@+id/btn_custom_add"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_add_custom"
+                app:layout_constraintRight_toRightOf="@id/view2"
+                app:layout_constraintTop_toTopOf="@id/line1"
+                app:layout_constraintBottom_toBottomOf="@id/line2"/>
+
 
             <View
                 android:id="@+id/view3"

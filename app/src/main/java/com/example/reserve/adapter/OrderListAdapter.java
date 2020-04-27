@@ -10,32 +10,34 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reserve.R;
-import com.example.reserve.bean.CurstomListBean;
+import com.example.reserve.bean.OrderBean;
 
 import java.util.List;
 
 /**
  * @auther: lijunjie
- * @createDate: 2020/4/16  21:21
- * @purpose：用于客户列表信息的recyclerview
+ * @createDate: 2020/4/23  20:25
+ * @purpose：用于订单列表的adapter
  */
-public class CurstomListAdapter extends RecyclerView.Adapter<CurstomListAdapter.ViewHolder> {
+public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ViewHolder> {
 
-    private List<CurstomListBean.CurstomBean> curstomList;
+    private List<OrderBean> orderBeans;
 
-    private CurstomListAdapter.OnItemClickListener mOnItemClickListener = null;
-
-    public CurstomListAdapter(CurstomListBean bean){
-        curstomList=bean.getResult();
+    public OrderListAdapter(List<OrderBean>order){
+        orderBeans=order;
     }
+
+    private OrderListAdapter.OnItemClickListener mOnItemClickListener = null;
+
 
     public static interface OnItemClickListener {
         void onItemClick(View view,int position);
     }
 
-    public void setmOnItemClickListener(CurstomListAdapter.OnItemClickListener onItemClickListener){
+    public void setmOnItemClickListener(OrderListAdapter.OnItemClickListener onItemClickListener){
         this.mOnItemClickListener = onItemClickListener;
     }
+
 
     @NonNull
     @Override
@@ -53,17 +55,16 @@ public class CurstomListAdapter extends RecyclerView.Adapter<CurstomListAdapter.
         return viewHolder;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull CurstomListAdapter.ViewHolder holder, int position) {
-        holder.tv_name.setText(curstomList.get(position).getName());
 
+    @Override
+    public void onBindViewHolder(@NonNull OrderListAdapter.ViewHolder holder, int position) {
+        holder.tv_name.setText(orderBeans.get(position).getTypeName());
     }
 
     @Override
     public int getItemCount() {
-        return curstomList.size();
+        return orderBeans.size();
     }
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -75,5 +76,6 @@ public class CurstomListAdapter extends RecyclerView.Adapter<CurstomListAdapter.
             con=itemView.findViewById(R.id.con_view);
         }
     }
+
 
 }

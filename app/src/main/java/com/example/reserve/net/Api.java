@@ -5,6 +5,7 @@ import com.example.reserve.bean.CurstomAddBean;
 import com.example.reserve.bean.CurstomListBean;
 import com.example.reserve.bean.HomeListBean;
 import com.example.reserve.bean.LoginBean;
+import com.example.reserve.bean.OrderListBean;
 import com.example.reserve.bean.TBean;
 
 import java.util.ArrayList;
@@ -45,6 +46,20 @@ public interface Api {
     @Headers({"Content-Type: application/json","Accept: application/json"})
     @POST("app/user/register/verify")
     Call<LoginBean>sedPhoneNumber(
+            @Body RequestBody json
+    );
+
+    //2.1删除用户订单
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST("hotel/customer/order/delete")
+    Call<TBean>deleteOrder(
+            @Body RequestBody json
+    );
+
+    //2.2获取用户订单列表
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST("hotel/customer/order/list")
+    Call<OrderListBean>getOrderList(
             @Body RequestBody json
     );
 

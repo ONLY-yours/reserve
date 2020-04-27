@@ -1,6 +1,4 @@
-package com.example.reserve.activity.UserCenter;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.reserve.activity.UserCenter.Custom;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.reserve.R;
+import com.example.reserve.activity.UserCenter.Custom.CurstomListActivity;
+import com.example.reserve.activity.UserCenter.VipActivity;
 import com.example.reserve.base.BaseActivity;
 import com.example.reserve.bean.TBean;
 import com.example.reserve.net.AppRetrofit;

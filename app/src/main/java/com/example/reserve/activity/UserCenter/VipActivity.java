@@ -1,26 +1,27 @@
 package com.example.reserve.activity.UserCenter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.reserve.R;
+import com.example.reserve.activity.UserCenter.Custom.CurstomListActivity;
+import com.example.reserve.activity.UserCenter.OrderManager.OrderManageActivity;
 import com.example.reserve.base.BaseActivity;
 import com.example.reserve.bean.CurstomListBean;
+import com.example.reserve.bean.OrderBean;
+import com.example.reserve.bean.OrderListBean;
 import com.example.reserve.net.AppRetrofit;
 
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class VipActivity extends BaseActivity implements View.OnClickListener {
 
@@ -31,6 +32,8 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
     private TextView tvPeopleAdd;
 
     public static CurstomListBean curstomListBean;
+
+    public static List<OrderBean> orderlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,22 @@ public class VipActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.tv_order_manager:
-                startActivity(OrderManageActivity.class);
+                JSONObject jsonObjectempty = new JSONObject();
+                RequestBody bodyempty=RequestBody.create(MediaType.parse("application/json"),jsonObjectempty.toString());
+                AppRetrofit.getNetApi().getOrderList(bodyempty).enqueue(new Callback<OrderListBean>() {
+                    @Override
+                    public void onResponse(Call<OrderListBean> call, Response<OrderListBean> response) {
+//                        showToast("true"+response.body().getResult().get(1).getCheckinTime());
+                        orderlist=response.body().getResult();
+                        startActivity(OrderManageActivity.class);
+                    }
+
+                    @Override
+                    public void onFailure(Call<OrderListBean> call, Throwable t) {
+                        showToast("网络不好请重试");
+                    }
+                });
+
                 break;
             case R.id.tv_self_message:
                 startActivity(PeopleAddActivity.class);
